@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IMC</title>
+    
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+
+    <script>
+        //função para calcular o valor do IMC
+        function calcularImc(){
+            var p = parseFloat(document.getElementById("peso").value);
+            var a = parseFloat(document.getElementById("altura").value);
+            var imc = p / (a*a);
+            if(imc<18.5){
+                var msg = ("<br><h4>Classificação: Magreza<h4><br>");
+            }
+            else if(imc>18.5 && imc<24.9){
+                var msg =("<br><h4>Classificação: Peso Normal<h4><br>");
+            }
+            else if(imc>25.0 && imc<29.9){
+                var msg = ("<br><h4>Classificação: Sobrepeso<h4><br>");
+            }
+            else if(imc>30.0 && imc<39.9){
+                var msg = ("<br><h4>Classificação: Obesidade<h4><br>");
+            }
+            else if(imc>40.0){
+                var msg = ("<br><h4>Classificação: Obesidade GRAVE<h4><br>");
+            }
+
+            document.getElementById("resultado").innerHTML = "<div class="+"text-center col-sm"+"><h3>Seu IMC é: " + imc.toFixed(2) + "</h3>" + msg +"</div>";
+            return false;
+
+        }
+    </script>
+    <style>
+        .display {
+            margin: 15%;
+            border: solid 1px #000;
+            padding: 20px;
+            background-color: white;
+            border-radius: 10px;
+            width: auto;
+        }
+    </style>
+
+</head>
+<body class="text-left">
+    
+    <div class="container display">
+        <div class="row">
+            <div class="col-sm">
+            
+                <h2 class="text-center">Calcular IMC</h2>
+                
+                <form action="#" method="GET" class="mb-5"> 
+                    <div class="form-group">
+                    <label for="altura">Altura:</label>
+                    <input type="text" id="altura" name="altura" class="form-control">
+                    </div>
+                    <div class="form-group">
+                    <label for="peso">Peso:</label>
+                    <input type="text" id="peso" name="peso" class="form-control">
+                    </div>
+
+                    <input type="submit" value="Calcular" onclick="calcularImc()" class="btn btn-primary">
+
+                </form>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm">
+                <div id="resultado"></div>
+            </div>
+        </div>
+        
+    </div>
+    
+</body>
+</html>
